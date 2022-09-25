@@ -12,8 +12,8 @@ import keras
 def fc():
     return tf.compat.v2.feature_column
 
-dftrain = pd.read_csv(r'C:\Users\nice\Desktop\ai\training data\train.csv')  #training data
-dfeval = pd.read_csv(r'C:\Users\nice\Desktop\ai\test data\eval.csv')        #testing data
+dftrain = pd.read_csv(r'training data\train.csv')  #training data
+dfeval = pd.read_csv(r'test data\eval.csv')        #testing data
 y_train = dftrain.pop('survived')   #we remove the "survived" column and save it
 y_eval = dfeval.pop('survived')     #we remove the "survived" column and save it
 
