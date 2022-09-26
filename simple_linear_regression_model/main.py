@@ -35,6 +35,7 @@ for feature_name in categorical_columns:
     # break
 for feature_name in numerical_columns:
     feature_columns.append(tf.feature_column.numeric_column(feature_name, dtype=tf.float32))
+# now the input function
 #the following code is to broke our data into epochs and batches
 #to deal with data (pandas data) we need to convert our data into (tf.data.Dataset) object as model need this data to be able to work --> this can be done by input function
 #print(feature_columns)
