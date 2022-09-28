@@ -8,7 +8,6 @@ from six.moves import urllib
 
 import tensorflow as tf
 import keras
-#tensorflow.compat.v2.feature_column
 def fc():
     return tf.compat.v2.feature_column
 
@@ -23,6 +22,7 @@ y_eval = dfeval.pop('survived')     #we remove the "survived" column and save it
 
 categorical_columns = ['sex', 'n_siblings_spouses', 'parch','class', 'deck', 'embark_town', 'alone']
 numerical_columns = ['age', 'fare']
+
 # categorical_columns = []
 # numerical_columns = []
 # for i in dftrain:
@@ -30,16 +30,19 @@ numerical_columns = ['age', 'fare']
 #         categorical_columns.append(i)
 #     else:
 #         numerical_columns.append(i)
+
 feature_columns = []
 for feature_name in categorical_columns:
     vocabulary = dftrain[feature_name].unique()     #give a list of all unique values in this column i.e: sex ->['male','female']
     feature_columns.append(tf.feature_column.categorical_column_with_vocabulary_list(feature_name,vocabulary))      #this feature column needed for linear regression --> it's like make a specific number or id for each category
 for feature_name in numerical_columns:
     feature_columns.append(tf.feature_column.numeric_column(feature_name, dtype=tf.float32))
+
 #2-make input function
 #_______________________
 #the following code is to broke our data into epochs and batches
 #to deal with data (pandas data) we need to convert our data into (tf.data.Dataset) object as model need this data to be able to work --> this can be done by input function
+
 def make_input_fn(data_df, label_df, num_epochs=10, shuffle=True, batch_size=32):      #(data frame(pandas),y_train or y_eval)
   def input_function():
     ds = tf.data.Dataset.from_tensor_slices((dict(data_df), label_df))  #create (tf.data.Dataset) object and it's label
@@ -70,6 +73,7 @@ clear_output() # clear the output
 print("accuracy = "+str(result['accuracy']*100)+"%")
 
 #6- prediction
+#________________
 
 result = list(linear_est.predict(eval_input_fn)) # the value of each prediction ,I most care about the probability
 # print(result)

@@ -1,0 +1,4 @@
+This model finds out the success rate of a person in surviving the Titanic,
+given a dataset that describes the survival status of individual passengers 
+on the Titanic liketheir gender, age, class number, etc.
+ Using the TensoFlow framework and linear regression model.

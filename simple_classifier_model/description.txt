@@ -1,0 +1,2 @@
+a simple classifier model that decides the type of iris flower given 
+the following features sepal length ,sepal width , petal length and petal width .
